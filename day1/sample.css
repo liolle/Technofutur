@@ -10,8 +10,9 @@ body{
     overflow-y: hidden;
 }
 
-counter {
+#counter {
     user-select: none;
+    font-size: 50px;
 }
 
 .main_div {
@@ -26,6 +27,7 @@ counter {
 .main_ul {
     overflow-y: scroll;
     height: 500px;
+    width: 300px;
     max-height: 500px;
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none;
@@ -68,6 +70,7 @@ li {
 button {
     cursor: pointer;
     border: 1px solid black;
+    width: 100px;
     border-radius: 5px;
     font-family: monospace;
     font-weight: bold;
