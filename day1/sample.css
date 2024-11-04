@@ -1,0 +1,20 @@
+body{
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.fullName{
+    border-radius: 5px;
+    padding: 2px 5px;
+    border: 2px solid rebeccapurple;
+    width: fit-content;
+    cursor: pointer;
+    user-select: none;
+}
+
+.fullName:hover{
+    background-color: black;
+    color: aliceblue;
+}
