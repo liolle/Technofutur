@@ -1,8 +1,38 @@
+* {
+    font-family: "Book Antiqua";
+}
+
 body{
     display : flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    overflow-y: hidden;
+}
+
+counter {
+    user-select: none;
+}
+
+.main_div {
+    display : flex;
+    flex-direction: column;
+    justify-content: center;
+    width: fit-content;
+    align-items: center;
+    gap: 10px;
+}
+
+.main_ul {
+    overflow-y: scroll;
+    height: 500px;
+    max-height: 500px;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+}
+
+.main_ul::-webkit-scrollbar {
+    display: none;
 }
 
 .fullName{
@@ -18,3 +48,34 @@ body{
     background-color: black;
     color: aliceblue;
 }
+
+.select-none{
+    user-select: none;
+}
+
+li {
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 2px 5px;
+    width: fit-content;
+}
+
+.active{
+    background-color: chartreuse;
+}
+
+
+button {
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-family: monospace;
+    font-weight: bold;
+    user-select: none;
+}
+
+button:hover {
+    background-color: #565656;
+    color: azure;
+}
+
