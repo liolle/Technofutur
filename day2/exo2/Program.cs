@@ -1,24 +1,23 @@
 ﻿
 
-static int geDifficulty(){
+static int getDifficulty(){
 
     string? user_input;
 
     do
     {
         Console.ForegroundColor = ConsoleColor.Blue;
-        Console.WriteLine("Veuiller sasir un niveau de difficulté");
+        Console.WriteLine("Veuiller sasir un niveau de difficulté: ");
         Console.ResetColor();
 
         user_input = Console.ReadLine();
         
-
         switch (user_input)
         {
             case "facile":
                 return 50;
             case "moyen":
-                return 100;
+                return 100 ;
             case "difficile":
                 return 200;
             default:
@@ -65,11 +64,8 @@ static bool validateInput(int secret){
 }
 
 
-
-
-
 Random rnd = new Random();
-int num = rnd.Next(1,geDifficulty());
+int num = rnd.Next(1,getDifficulty()+1);
 validateInput(num);
 
 
