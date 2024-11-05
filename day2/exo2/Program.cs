@@ -7,7 +7,7 @@ static int getDifficulty(){
     do
     {
         Console.ForegroundColor = ConsoleColor.Blue;
-        Console.WriteLine("Veuiller sasir un niveau de difficulté: ");
+        Console.WriteLine("Veuiller sasir un niveau de difficulté: \n- facile [1-50]\n- moyen [1-100]\n- difficile [1-200]\n");
         Console.ResetColor();
 
         user_input = Console.ReadLine();
