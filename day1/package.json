@@ -1,0 +1,14 @@
+{
+  "name": "technofutur",
+  "version": "1.0.0",
+  "description": "exo Technofutur",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "exo:1": "node exo1.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
