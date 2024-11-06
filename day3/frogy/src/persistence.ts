@@ -37,3 +37,10 @@ export function getPlayerPosition():Position|null{
 
 }
 
+/**
+ * Clear storage
+ */
+export function clearStorage(){
+	window.localStorage.removeItem("player_position")
+ }
+
