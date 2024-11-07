@@ -28,6 +28,7 @@ class Player {
 		y:BOARD_HEIGHT/2
 	}
 	speed =  20
+	base_speed = 25
 	width = 50
 	height = 50
 	context:RenderingContext2D
@@ -62,13 +63,13 @@ class Player {
 	stopPlayer (){
 		this.cur_position.y = this.position.y
 		this.cur_position.x = this.position.x
-		requestAnimationFrame(()=>{})
 	}
 
 	move(direction:Direction){
 		let burst = 0
 		if (this.last_direction != direction){
-			burst += 2*this.speed
+			this.speed  = Math.min(this.base_speed * 10,1000)
+			setTimeout(()=>this.speed= this.base_speed)
 		}
 		switch (direction) {
 			case "left":
@@ -91,25 +92,27 @@ class Player {
 			default:
 				break
 		}
+		this.last_direction = direction
 	}
 
 }
 const player = new Player(ctx)
 
-document.addEventListener('keydown', (event) => {
+document.addEventListener('keypress', (event) => {
+
 	switch (event.key) {
 		case 'z': // Move up
 			player.move("up")
-		break;
+			break;
 		case 'q': // Move left
 			player.move("left")
-		break;
+			break;
 		case 's': // Move down
 			player.move("down")
-		break;
+			break;
 		case 'd': // Move right
 			player.move("right")
-		break;
+			break;
 		default:
 			break;
 	}
@@ -121,7 +124,7 @@ document.addEventListener('keyup', (event) => {
 		case 'q': // Move left
 		case 's': // Move down
 		case 'd': // Move right
-			player.stopPlayer()
+			//player.stopPlayer()
 			break
 		default:
 			break;
