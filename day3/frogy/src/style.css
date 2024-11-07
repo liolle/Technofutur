@@ -32,8 +32,6 @@
 	padding : 5px;
 	border: 1px solid white;
 	border-radius: 5px;
-	max-width: 500px;
-	max-height: 500px;
 }
 
 @media (prefers-color-scheme: light) {
