@@ -45,7 +45,6 @@ account.credit(500)
 console.log(account.toString())
 account.debit(97)
 console.log(account.toString())
-
 account.debit(800)
 
 
