@@ -1,4 +1,4 @@
-import {Position} from "@types"
+import {Position,Direction} from "@types"
 
 const SQUARE_SIZE = 50
 const BOARD_ROWS = 15;
@@ -28,17 +28,17 @@ class Player {
 		y:BOARD_HEIGHT/2
 	}
 	speed =  20
-	last_direction = ""
 	width = 50
 	height = 50
 	context:RenderingContext2D
+	last_direction:Direction|null = null
 
 	constructor(context:RenderingContext2D){
 		this.context = context
 		this.position.x -= this.width/2
 		this.position.y -= this.height/2
-		this.cur_position.x -= this.position.x
-		this.cur_position.y -= this.position.y
+		this.cur_position.x = this.position.x
+		this.cur_position.y = this.position.y
 	}
 
 	draw() {
@@ -59,64 +59,70 @@ class Player {
 		this.position.y = y 
 	}
 
-	moveDown(){
-		this.cur_position.y = Math.max(this.cur_position.y, this.position.y)
-		this.cur_position.y+=this.speed
-		 if(this.last_direction != "down"){
-                        this.cur_position.y+= this.speed *2
-                        this.last_direction = "down"
-                }
-
-	}
-	moveUp(){
-		this.cur_position.y = Math.min(this.cur_position.y, this.position.y)
-		this.cur_position.y-=this.speed
-		 if(this.last_direction != "up"){
-                        this.cur_position.y-= this.speed *2
-                        this.last_direction = "up"
-                }
-
+	stopPlayer (){
+		this.cur_position.y = this.position.y
+		this.cur_position.x = this.position.x
+		requestAnimationFrame(()=>{})
 	}
 
-	moveLeft(){
-		this.cur_position.x = Math.min(this.cur_position.x, this.position.x)
-		this.cur_position.x-=this.speed
-		if(this.last_direction != "left"){
-                        this.cur_position.x-= this.speed *2
-			this.last_direction = "left"
-                }
+	move(direction:Direction){
+		let burst = 0
+		if (this.last_direction != direction){
+			burst += 2*this.speed
+		}
+		switch (direction) {
+			case "left":
+				this.cur_position.x = Math.min(this.cur_position.x, this.position.x)
+				this.cur_position.x -= this.speed + burst
 
-	}
-
-	moveRight(){
-		this.cur_position.x = Math.max(this.cur_position.x, this.position.x)
-		this.cur_position.x+=this.speed
-		if(this.last_direction != "right"){
-			this.cur_position.x+= this.speed * 2
-			this.last_direction = "right"
+				break
+			case "right":
+				this.cur_position.x = Math.max(this.cur_position.x, this.position.x)
+				this.cur_position.x += this.speed + burst
+				break
+			case "up":
+				this.cur_position.y = Math.min(this.cur_position.y, this.position.y)
+				this.cur_position.y -= this.speed + burst
+				break
+			case "down":
+				this.cur_position.y = Math.max(this.cur_position.y, this.position.y)
+				this.cur_position.y += this.speed + burst
+				break
+			default:
+				break
 		}
 	}
 
-
 }
-
-
 const player = new Player(ctx)
 
 document.addEventListener('keydown', (event) => {
 	switch (event.key) {
 		case 'z': // Move up
-			player.moveUp()	
+			player.move("up")
 		break;
 		case 'q': // Move left
-			player.moveLeft()	
+			player.move("left")
 		break;
 		case 's': // Move down
-			player.moveDown()	
+			player.move("down")
 		break;
 		case 'd': // Move right
-			player.moveRight()	
+			player.move("right")
 		break;
+		default:
+			break;
+	}
+});
+
+document.addEventListener('keyup', (event) => {
+	switch (event.key) {
+		case 'z': // Move up
+		case 'q': // Move left
+		case 's': // Move down
+		case 'd': // Move right
+			player.stopPlayer()
+			break
 		default:
 			break;
 	}
