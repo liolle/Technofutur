@@ -85,19 +85,5 @@ add_after_btn.addEventListener("click", () => {
     }
 })
 
-add_after_btn.addEventListener("click", () => {
-    if (!selected_animal) {
-        return
-    }
-    switch (selected_animal.textContent) {
-        case "🦁":
-            selected_animal.insertBefore(lion())
-            break
-        case "🦒":
-            selected_animal.insertBefore(giraffe())
-            break
-        default:
-            break
-    }
-})
+
 
