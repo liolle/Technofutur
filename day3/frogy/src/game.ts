@@ -1,11 +1,9 @@
-import {savePlayerPosition,getPlayerPosition} from "@/persistence"
 import {Position} from "@types"
 
 const SQUARE_SIZE = 50
 const BOARD_ROWS = 15;
 const BOARD_COLS = 20;
-const SEPARATOR_WIDTH = 2
-const BOARD_WIDTH = BOARD_COLS * SQUARE_SIZE 
+const BOARD_WIDTH = BOARD_COLS * SQUARE_SIZE
 const BOARD_HEIGHT = BOARD_ROWS * SQUARE_SIZE
 const TARGET_FPS = 30
 
@@ -25,15 +23,22 @@ class Player {
 		x:BOARD_WIDTH/2,
 		y:BOARD_HEIGHT/2
 	}
+	cur_position:Position = {
+		x:BOARD_WIDTH/2,
+		y:BOARD_HEIGHT/2
+	}
+	speed =  20
 	last_direction = ""
+	width = 50
+	height = 50
+	context:RenderingContext2D
+
 	constructor(context:RenderingContext2D){
 		this.context = context
-		this.height = 50
-		this.width = 50
 		this.position.x -= this.width/2
 		this.position.y -= this.height/2
-		this.speed = 20
-		this.cur_position = {...this.position}
+		this.cur_position.x -= this.position.x
+		this.cur_position.y -= this.position.y
 	}
 
 	draw() {
@@ -118,6 +123,9 @@ document.addEventListener('keydown', (event) => {
 });
 
 function animate(){
+	if (!ctx){
+		return
+	}
 	ctx.clearRect(0,0,BOARD_WIDTH,BOARD_HEIGHT)
 	player.update()	
 	player.draw()
