@@ -19,17 +19,35 @@
             switch (int.Parse(user_input))
             {
                 case 1:
-                    return x=>(double)x * 9/5 + 32;
+                    Console.WriteLine($"[Celsius => Farenheit]");
+                    return x=>{
+                        return (double)x * 9/5 + 32;
+                    };
                 case 2:
-                    return x=>(double) x + 273.15;
+                    Console.WriteLine($"[Celsius => Kelvin]");
+                    return x=>{
+                        return (double) x + 273.15;
+                    };
                 case 3:
-                    return x=>(double)(x-32) * 5/9;
+                    Console.WriteLine($"[Farenheit => Celsiur]");
+                    return x=>{
+                        return (double)(x-32) * 5/9;
+                    };
                 case 4:
-                    return x=>(double)(x-32) * 5/9 + 273.15;
+                    Console.WriteLine($"[Farenheit => Kelvin]");
+                    return x=>{
+                        return (double)(x-32) * 5/9 + 273.15;
+                    };
                 case 5:
-                    return x=>(double) x - 273.15;
+                    Console.WriteLine($"[Kelvin => Celsius]");
+                    return x=>{
+                        return (double) x - 273.15;
+                    };
                 case 6:
-                    return x=>(double) (x - 273.15) * 9/5 +32;
+                    Console.WriteLine($"[Kelvin => Farenheit]");
+                    return x=>{
+                        return (double) (x - 273.15) * 9/5 +32;
+                    };
                 default:
                     Console.WriteLine("Enter a valide number beween [1-6]");
                     break;
