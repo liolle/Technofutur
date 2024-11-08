@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("exo4")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9013b7d774f2d9c1f81c3a1fcc2414d04686844e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1d9d65fe8e3d0045ad58ede098b6059ba477a8e9")]
 [assembly: System.Reflection.AssemblyProductAttribute("exo4")]
 [assembly: System.Reflection.AssemblyTitleAttribute("exo4")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

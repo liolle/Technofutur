@@ -1,24 +1,22 @@
-﻿
-
-static int getDifficulty(){
+﻿static int getDifficulty(){
 
     string? user_input;
 
     do
     {
         Console.ForegroundColor = ConsoleColor.Blue;
-        Console.WriteLine("Veuiller sasir un niveau de difficulté: \n- facile [1-50]\n- moyen [1-100]\n- difficile [1-200]\n");
+        Console.WriteLine("Pick the difficulty: \n- easy [1-50]\n- medium [1-100]\n- hard [1-200]\n");
         Console.ResetColor();
 
         user_input = Console.ReadLine();
         
         switch (user_input)
         {
-            case "facile":
+            case "easy":
                 return 50;
-            case "moyen":
+            case "medium":
                 return 100 ;
-            case "difficile":
+            case "hard":
                 return 200;
             default:
                 continue;
@@ -28,44 +26,81 @@ static int getDifficulty(){
 
 }
 
-static bool validateInput(int secret){
+void play(int secret){
 
     string? user_input;
-    int val;
+    int val = 0;
 
+    while (val != secret)
+    {
+        do
+        {
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine("Quel est le nombre mystère ?");
+            Console.ResetColor();
+
+            user_input = Console.ReadLine();
+            
+
+            if (int.TryParse(user_input,out val))
+            {
+                break;
+                
+            }else {
+                Console.WriteLine("Invalid input. Please enter a valid integer.");
+            }
+
+        } while (true);
+        if (secret>val){
+            Console.WriteLine("secret is greather");
+
+        }else if(secret<val) {
+            Console.WriteLine("secret is smaller");
+        }
+    }
+    Console.WriteLine("Congratualtion you have fount the secret");
+
+    return ;
+}
+
+bool END_GAME_FLAG = false;
+
+
+void promptReplay(){
+    string? user_input;
     do
     {
-        Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine("Quel est le nombre mystère ?");
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.WriteLine("Do you want to replay  [y/n]?");
         Console.ResetColor();
 
         user_input = Console.ReadLine();
-        
 
-        if (int.TryParse(user_input,out val))
+        switch (user_input.ToLower())
         {
-            break;
+            case "y":
+                return;
+            case "n":
+                END_GAME_FLAG = true;
+                return;
             
-        }else {
-            Console.WriteLine("Invalid input. Please enter a valid integer.");
+            default:
+                break;
         }
 
-     
     } while (true);
 
-
-    if(secret == val){
-        Console.WriteLine($"Felicitation tu as trouvé le secret");
-    }{
-        Console.WriteLine($"Dommage le secret était {secret}");
-    }
-    
-    return false;
 }
 
 
-Random rnd = new Random();
-int num = rnd.Next(1,getDifficulty()+1);
-validateInput(num);
+while (!END_GAME_FLAG)
+{
+    Random rnd = new Random();
+    int num = rnd.Next(1,getDifficulty()+1);
+    play(num);
+    promptReplay();
+}
+
+
 
 
