@@ -23,16 +23,11 @@ class Player {
 		x:BOARD_WIDTH/2,
 		y:BOARD_HEIGHT/2
 	}
-	cur_position:Position = {
-		x:BOARD_WIDTH/2,
-		y:BOARD_HEIGHT/2
-	}
-	speed =  50
+	speed =  10
 	v_up = 0
 	v_down = 0
 	v_left = 0
 	v_right = 0
-	base_speed = 25
 	width = 50
 	height = 50
 	context:RenderingContext2D
@@ -44,8 +39,6 @@ class Player {
 		// setup Positions:
 		this.position.x -= this.width/2
 		this.position.y -= this.height/2
-		this.cur_position.x = this.position.x
-		this.cur_position.y = this.position.y
 	}
 
 	draw() {
@@ -57,16 +50,12 @@ class Player {
 	}
 
 	update(){
-		const x = Math.max(Math.min(this.position.x+(this.v_right-this.v_left)/TARGET_FPS,BOARD_WIDTH - this.width),0)
-		const y = Math.max(Math.min(this.position.y+(this.v_down-this.v_up)/TARGET_FPS,BOARD_HEIGHT - this.height),0)
+		// checking border
+		const x = Math.max(Math.min(this.position.x+(this.v_right-this.v_left),BOARD_WIDTH - this.width),0)
+		const y = Math.max(Math.min(this.position.y+(this.v_down-this.v_up),BOARD_HEIGHT - this.height),0)
 
 		this.position.x = x 
 		this.position.y = y 
-	}
-
-	stopPlayer (){
-		this.cur_position.y = this.position.y
-		this.cur_position.x = this.position.x
 	}
 
 	move(direction:Direction){
