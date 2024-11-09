@@ -27,15 +27,21 @@ class Player {
 		x:BOARD_WIDTH/2,
 		y:BOARD_HEIGHT/2
 	}
-	speed =  20
+	speed =  50
+	v_up = 0
+	v_down = 0
+	v_left = 0
+	v_right = 0
 	base_speed = 25
 	width = 50
 	height = 50
 	context:RenderingContext2D
-	last_direction:Direction|null = null
 
 	constructor(context:RenderingContext2D){
 		this.context = context
+
+
+		// setup Positions:
 		this.position.x -= this.width/2
 		this.position.y -= this.height/2
 		this.cur_position.x = this.position.x
@@ -51,10 +57,8 @@ class Player {
 	}
 
 	update(){
-		const dx = this.cur_position.x - this.position.x 
-		const dy = this.cur_position.y - this.position.y 
-		const x = Math.max(Math.min(this.position.x+dx/TARGET_FPS,BOARD_WIDTH - this.width),0)
-		const y = Math.max(Math.min(this.position.y+dy/TARGET_FPS,BOARD_HEIGHT - this.height),0)
+		const x = Math.max(Math.min(this.position.x+(this.v_right-this.v_left)/TARGET_FPS,BOARD_WIDTH - this.width),0)
+		const y = Math.max(Math.min(this.position.y+(this.v_down-this.v_up)/TARGET_FPS,BOARD_HEIGHT - this.height),0)
 
 		this.position.x = x 
 		this.position.y = y 
@@ -66,66 +70,81 @@ class Player {
 	}
 
 	move(direction:Direction){
-		let burst = 0
-		if (this.last_direction != direction){
-			this.speed  = Math.min(this.base_speed * 10,1000)
-			setTimeout(()=>this.speed= this.base_speed)
-		}
 		switch (direction) {
 			case "left":
-				this.cur_position.x = Math.min(this.cur_position.x, this.position.x)
-				this.cur_position.x -= this.speed + burst
-
-				break
+				this.v_left =  this.speed
+			break
 			case "right":
-				this.cur_position.x = Math.max(this.cur_position.x, this.position.x)
-				this.cur_position.x += this.speed + burst
-				break
+				this.v_right = this.speed
+			break
 			case "up":
-				this.cur_position.y = Math.min(this.cur_position.y, this.position.y)
-				this.cur_position.y -= this.speed + burst
-				break
+				this.v_up = this.speed
+			break
 			case "down":
-				this.cur_position.y = Math.max(this.cur_position.y, this.position.y)
-				this.cur_position.y += this.speed + burst
-				break
+				this.v_down = this.speed
+			break
 			default:
 				break
 		}
-		this.last_direction = direction
+	}
+
+	cancelMove(direction:Direction){
+		switch (direction) {
+			case "left":
+				this.v_left = 0 
+			break
+			case "right":
+				this.v_right = 0
+			break
+			case "up":
+				this.v_up = 0 
+			break
+			case "down":
+				this.v_down = 0
+			break
+			default:
+				break
+		}
 	}
 
 }
 const player = new Player(ctx)
 
-document.addEventListener('keypress', (event) => {
+document.addEventListener('keydown', (event) => {
 
 	switch (event.key) {
 		case 'z': // Move up
 			player.move("up")
-			break;
+		break;
 		case 'q': // Move left
 			player.move("left")
-			break;
+		break;
 		case 's': // Move down
 			player.move("down")
-			break;
+		break;
 		case 'd': // Move right
 			player.move("right")
-			break;
+		break;
 		default:
 			break;
 	}
 });
 
 document.addEventListener('keyup', (event) => {
+
 	switch (event.key) {
-		case 'z': // Move up
-		case 'q': // Move left
-		case 's': // Move down
-		case 'd': // Move right
-			//player.stopPlayer()
-			break
+		case 'z':
+			player.cancelMove("up")
+		break;
+		case 's': 
+			player.cancelMove("down")
+		break;
+		case 'q':
+			player.cancelMove("left")
+		break;
+		case 'd':
+			player.cancelMove("right")
+		break;
 		default:
 			break;
 	}
