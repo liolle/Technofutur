@@ -35,10 +35,10 @@ const player_options:PlayerOptions = {
     src:"fullsheet.png",
     rows:45,
     cols:13,
-    animation_up: {idx:8,frames:9},
-    animation_left:{idx:9,frames:9},
-    animation_down: {idx:10,frames:9},
-    animation_right: {idx:11,frames:9},
+    up: {idx:8,frames:9},
+    left:{idx:9,frames:9},
+    down: {idx:10,frames:9},
+    right: {idx:11,frames:9},
   }
 
 }

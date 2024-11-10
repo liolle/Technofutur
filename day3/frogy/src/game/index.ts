@@ -2,6 +2,7 @@ import { GameOptions } from "@types";
 import { Player } from "../player";
 
 export class Game {
+  private 
   _board_width = 512
   _board_height = 512
   _context:RenderingContext2D|null = null
@@ -41,16 +42,16 @@ export class Game {
   }
  
 
-  #animate(timestamp){
+  #animate(timestamp:number){
     const elapsed = timestamp - this.prev_timestamp;
-    
+    this.prev_timestamp = timestamp
     if (!this.context){
       return
     }
+
     this._context.clearRect(0,0,this.board_width,this.board_height)
     for(const player of this._players){
-      player.update(elapsed)
-      player.draw()
+      player.draw(elapsed)
     }
 
     requestAnimationFrame(this.#animate.bind(this))

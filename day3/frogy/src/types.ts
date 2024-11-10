@@ -16,7 +16,7 @@ export type PlayerOptions = {
   height: number | undefined,
   position: Position|undefined,
   base_speed:number|undefined,
-  tyle_set:TyleSet | undefined
+  tyle_set:TyleSet 
 }
 
 export type AnimationInfo = {
@@ -28,10 +28,10 @@ export type TyleSet = {
   src:string,
   rows:number,
   cols:number,
-  animation_up: AnimationInfo|undefined 
-  animation_down: AnimationInfo|undefined ,
-  animation_left: AnimationInfo|undefined ,
-  animation_right: AnimationInfo|undefined,
+  up: AnimationInfo|undefined,
+  down: AnimationInfo|undefined ,
+  left: AnimationInfo|undefined ,
+  right: AnimationInfo|undefined,
 }
 
 export type GameOptions = {

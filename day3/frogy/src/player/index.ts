@@ -1,6 +1,11 @@
 import { PlayerOptions, Position, Direction, TyleSet } from "@type";
 export class Player {
   private listenersCb:(()=>void)[] = []
+  private frameX = 0
+  private frameY = 0
+  private frameMax = 1
+  private draw_interval = 60
+  private last_drawn = 0
 
   id = "default"
   position:Position = {
@@ -89,63 +94,69 @@ export class Player {
       this.tyle_set = options.tyle_set 
       this.tyle_image = new Image()
       this.tyle_image.src = options.tyle_set.src
+      this.frameY = this.tyle_set[this.last_direction].idx || 0
+      this.frameMax = this.tyle_set[this.last_direction].frames || 1
 
     }
   }
 
-  #computDirection (){
+  
 
-    const dir_arr = [
-      {direction:"down",speed:this.v_down},
-      {direction:"up",speed:this.v_up},
-      {direction:"left",speed:this.v_left},
-      {direction:"right",speed:this.v_right},
-    ]
+  #computDirection (rotate=true){
 
-    dir_arr.sort((a,b)=>b.speed-a.speed)
-    if(dir_arr[0].speed>0){
-      this.last_direction = dir_arr[0].direction 
-    }
-  }
-
-  draw() {
+    let direction = this.last_direction
     
-    if(this.tyle_set && this.tyle_image){
-      let tyle_idx = 0
-      switch (this.last_direction) {
-        case "up":
-          tyle_idx = this.tyle_set.animation_up.idx ?? 0
-          break;
-        case "down":
-          tyle_idx = this.tyle_set.animation_down.idx ?? 0
-          break;
-        case "left":
-          tyle_idx = this.tyle_set.animation_left.idx ?? 0
-          break;
-        case "right":
-          tyle_idx = this.tyle_set.animation_right.idx ?? 0
-          break;
+    const dx = this.v_right - this.v_left
+    const dy = this.v_down-this.v_up
+    const d_alpha = Math.abs(dx)+Math.abs(dy) 
 
-        default:
-          break;
+    if (d_alpha != 0) {
+      if(Math.abs(dx)>Math.abs(dy)){
+        direction = dx>0 ? "right":"left"
+      }else {
+        direction = dy>0? "down":"up"
       }
-      this.context.drawImage(this.tyle_image,0,tyle_idx * this.height,64,64,this.position.x,this.position.y,64,64)
     }
 
-
-
+    if(d_alpha > 0){
+    this.last_direction = direction
+      this.isMoving = true
+      this.frameMax = this.tyle_set[direction].frames
+      this.frameY = this.tyle_set[direction].idx
+    }else {
+      this.frameX=0
+      this.isMoving = false
+    }
   }
 
-  update(dt:number){
+  draw(dt:number) {
+    this.#update(dt)
+    this.#animate(dt)
+    this.context.drawImage(this.tyle_image,this.frameX * this.width,this.frameY * this.height,64,64,this.position.x,this.position.y,128,128)
+  }
+
+  #animate(dt:number){
+    if (this.last_drawn >= this.draw_interval){
+      this.last_drawn = 0
+      if(this.isMoving){
+        this.frameX = (this.frameX+1)%this.frameMax
+      }
+    }else {
+      this.last_drawn += dt
+    }
+  }
+
+  #update(dt:number){
     // checking border
-    const x = Math.max(Math.min(this.position.x+(this.v_right-this.v_left),Infinity- this.width),0)
-    const y = Math.max(Math.min(this.position.y+(this.v_down-this.v_up),Infinity - this.height),0)
+    const x = Math.max(Math.min(this.position.x+(this.v_right-this.v_left) * dt/32,Infinity- this.width),0)
+    const y = Math.max(Math.min(this.position.y+(this.v_down-this.v_up) * dt/32,Infinity - this.height),0)
 
     this.position.x = x 
     this.position.y = y 
   }
 
   move(direction:Direction){
+
     switch (direction) {
       case "left":
         this.v_left =  this.speed
@@ -182,7 +193,7 @@ export class Player {
       default:
         break
     }
-    this.#computDirection()
+    this.#computDirection(false)
   }
 
   free(){
