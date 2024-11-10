@@ -14,8 +14,8 @@ export class Game {
     this._board_width = options.board_width
     this._board_height = options.board_height
     this._context = context
-
   }
+
 
   launch(){
     this.#animate(this.prev_timestamp)
@@ -41,7 +41,10 @@ export class Game {
     return this._board_height
   }
  
-
+  /**
+   * Game inimation loop
+   *
+   * */
   #animate(timestamp:number){
     const elapsed = timestamp - this.prev_timestamp;
     this.prev_timestamp = timestamp

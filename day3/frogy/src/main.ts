@@ -9,7 +9,6 @@ const BOARD_ROWS = 30;
 const BOARD_COLS = 40;
 const BOARD_WIDTH = BOARD_COLS * SQUARE_SIZE
 const BOARD_HEIGHT = BOARD_ROWS * SQUARE_SIZE
-const TARGET_FPS = 30
 
 const  canvas = document.querySelector("#canvas") as HTMLCanvasElement
 

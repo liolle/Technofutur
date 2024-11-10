@@ -7,7 +7,7 @@ export class Player {
   private draw_interval = 60
   private last_drawn = 0
   private size = 1
-
+  private is_moving = false
   id = "default"
   position:Position = {
     x:0,
@@ -35,7 +35,7 @@ export class Player {
   }
 
   #setUpListeners(){
-    const keyDownCb = ()=>{
+    const keyDownCb = (event:KeyboardEvent)=>{
       switch (event.key) {
         case 'z': // Move up
           this.move("up")
@@ -55,7 +55,7 @@ export class Player {
 
     }
 
-    const keyUpCb = ()=>{
+    const keyUpCb = (event:KeyboardEvent)=>{
       switch (event.key) {
         case 'z':
           this.cancelMove("up")
@@ -106,7 +106,10 @@ export class Player {
 
   
 
-  #computDirection (rotate=true){
+  /**
+   * Compute the direction in witch the current character should face and update the tyle_set accordingly
+   */
+  #computDirection (){
 
     let direction = this.last_direction
     
@@ -124,21 +127,29 @@ export class Player {
 
     if(d_alpha > 0){
     this.last_direction = direction
-      this.isMoving = true
+      this.is_moving = true
       this.frameMax = this.tyle_set[direction].frames
       this.frameY = this.tyle_set[direction].idx
     }else {
       this.frameX=0
-      this.isMoving = false
+      this.is_moving = false
     }
   }
 
+  /**
+   * Update => Animate then draw the current character
+   * @param {number} dt time in ms between this frame and the last frame
+  */
   draw(dt:number) {
     this.#update(dt)
     this.#animate(dt)
     this.context.drawImage(this.tyle_image,this.frameX * this.width,this.frameY * this.height,64,64,this.position.x,this.position.y,this.width*this.size,this.height*this.size)
   }
 
+  /**
+   * Animate the character every draw_interval (the deltaTime is used to copmpute the draw_interval)
+   * @param {number} dt time in ms between this frame and the last frame
+  */
   #animate(dt:number){
     // TODO (find a better formula to include the the character speed in the draw_interval)
     this.draw_interval = Math.ceil(2**(7-Math.ceil(this.speed/(this.width*dt)))) 
@@ -146,7 +157,7 @@ export class Player {
 
     if (this.last_drawn >= this.draw_interval){
       this.last_drawn = 0
-      if(this.isMoving){
+      if(this.is_moving){
         this.frameX = (this.frameX+1)%this.frameMax
       }
     }else {
@@ -154,6 +165,11 @@ export class Player {
     }
   }
 
+  
+  /**
+   * Update the current character position based on his speed vector v_left, v_right, v_up, v_down
+   * @param {number} dt time in ms between this frame and the last frame
+  */
   #update(dt:number){
     // checking border
     const x = Math.max(Math.min(this.position.x+(this.v_right-this.v_left) * dt/32,Infinity- this.width),0)
@@ -163,6 +179,10 @@ export class Player {
     this.position.y = y 
   }
 
+ /**
+  * Set the velocity in the given direction to the current character speed
+  * @param {Direction} direction 
+  */
   move(direction:Direction){
 
     switch (direction) {
@@ -184,6 +204,11 @@ export class Player {
     this.#computDirection()
   }
 
+
+ /**
+  * Set the velocity in the given direction to 0
+  * @param {Direction} direction 
+  */
   cancelMove(direction:Direction){
     switch (direction) {
       case "left":
@@ -201,9 +226,12 @@ export class Player {
       default:
         break
     }
-    this.#computDirection(false)
+    this.#computDirection()
   }
 
+  /**
+   * Clear all the events listeners
+   */
   free(){
     for(const cb of this.listenersCb){
       cb()
