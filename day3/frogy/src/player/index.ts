@@ -6,14 +6,15 @@ export class Player {
   private frameMax = 1
   private draw_interval = 60
   private last_drawn = 0
+  private size = 1
 
   id = "default"
   position:Position = {
     x:0,
     y:0
   }
-  speed =  10
-  base_speed = 10
+  speed =  8
+  base_speed = 8
   v_up = 0
   v_down = 0
   v_left = 0
@@ -88,6 +89,9 @@ export class Player {
       x:0,
       y:0
     }
+    this.width = options.width || 64
+    this.height = options.height || 64
+    this.size = options.size || 1
 
     this.base_speed = options.base_speed ?? 10
     if(options.tyle_set){
@@ -132,10 +136,14 @@ export class Player {
   draw(dt:number) {
     this.#update(dt)
     this.#animate(dt)
-    this.context.drawImage(this.tyle_image,this.frameX * this.width,this.frameY * this.height,64,64,this.position.x,this.position.y,128,128)
+    this.context.drawImage(this.tyle_image,this.frameX * this.width,this.frameY * this.height,64,64,this.position.x,this.position.y,this.width*this.size,this.height*this.size)
   }
 
   #animate(dt:number){
+    // TODO (find a better formula to include the the character speed in the draw_interval)
+    this.draw_interval = Math.ceil(2**(7-Math.ceil(this.speed/(this.width*dt)))) 
+
+
     if (this.last_drawn >= this.draw_interval){
       this.last_drawn = 0
       if(this.isMoving){

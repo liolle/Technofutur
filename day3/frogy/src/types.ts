@@ -14,6 +14,7 @@ export type PlayerOptions = {
   id:string,
   width: number | undefined,
   height: number | undefined,
+  size:number|undefined,
   position: Position|undefined,
   base_speed:number|undefined,
   tyle_set:TyleSet 

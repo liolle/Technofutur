@@ -24,11 +24,12 @@ const ctx =canvas.getContext('2d')
 
 const player_options:PlayerOptions = {
   id: "default",
-  width:32,
-  height:32,
+  width:64,
+  height:64,
+  size:2,
   initial_position:{
-    x:(BOARD_WIDTH-32)/2 ,
-    y:(BOARD_HEIGHT-32)/2 
+    x:(BOARD_WIDTH)/2 -64 ,
+    y:(BOARD_HEIGHT)/2 -64 
   } ,
   base_speed: 10,
   tyle_set: {
