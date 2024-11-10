@@ -1,5 +1,5 @@
 import  "./style.css"
-import {Posistion,Direction,PlayerOptions,TyleSet} from "@types"
+import {PlayerOptions} from "@types"
 import {Player} from "@/player"
 import { Game } from "@/game";
 

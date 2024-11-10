@@ -1,4 +1,4 @@
-export type Posistion = {
+export type Position = {
 	x:number,
 	y:number
 }
@@ -14,7 +14,7 @@ export type PlayerOptions = {
   id:string,
   width: number | undefined,
   height: number | undefined,
-  position: Posistion|undefined,
+  position: Position|undefined,
   base_speed:number|undefined,
   tyle_set:TyleSet | undefined
 }
