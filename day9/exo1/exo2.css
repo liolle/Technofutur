@@ -1,0 +1,70 @@
+.aqua {
+  color: aqua;
+}
+
+.title {
+ font-size:18px;
+  font-weight: 800;
+}
+
+#l1{
+  background: grey;
+  width: 100%;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#l2 {
+  margin-top: 20px;
+  padding-top: 40px;
+  padding-left: 40px;
+
+  padding-bottom: 40px;
+  border-top: 2px dotted green;
+  border-bottom: 2px dotted green;
+}
+
+#l3 {
+  padding: 20px;
+  padding-left: 200px;
+
+  padding-right: 0;
+  border-bottom: 2px dotted green;
+}
+
+#l3 div {
+    background: red;
+  width: 100%;
+
+}
+
+p {
+  background: red;
+  padding:5px;
+  border: 3px dotted green
+}
+
+.big {
+  font-size:26px
+}
+
+hr {
+border-top: 2px dotted green;
+  border-bottom: 0px
+}
+
+.text-white {
+  color:white
+}
+
+.text-yellow {
+  color:yellow 
+}
+
+.text-grey {
+  color:grey
+}
+
+

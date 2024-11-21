@@ -50,3 +50,14 @@ export type GameOptions = {
   board_width:number,
   board_height:number
 }
+
+export type Route = {
+  path:string,
+  handler:{
+    handle:()=>void,
+    cleanUp:()=>void
+  }
+}
+
+
+

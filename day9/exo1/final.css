@@ -1,0 +1,114 @@
+body {
+  margin:0;
+  padding:0;
+}
+
+
+#root{
+  height: calc(100vh - 30px);
+  background: gray;
+  display: flex;
+  gap:5px;
+  padding: 15px;
+  flex-direction: column;
+}
+
+#root header {
+  flex: 1 1 4%;
+  background: orange;
+  border-radius: 10px;
+}
+
+#root header div {
+  display: flex;
+  padding-left: 20px;
+  align-items: center;
+  height: 100%;
+}
+
+
+#root main {
+  flex: 15 0 auto;
+  display: flex;
+  gap:5px;
+}
+
+#root main article {
+  padding: 15px;
+  flex: 1 1 60%;
+  border-radius: 15px;
+  background: yellow;
+}
+
+
+#root main #menu {
+  padding: 15px;
+  flex: 1 20%;
+  border-radius: 15px;
+  background: purple;
+}
+
+#root main #info {
+  padding: 15px;
+  flex: 1 1 20%;
+  border-radius: 10px;
+  background: purple;
+}
+
+#root main #info div {
+  display: flex;
+}
+
+@media screen and (max-width: 900px) {
+
+  #root main {
+    flex-direction: column;
+  }
+
+  #root main #menu {
+    order:1;
+    flex: 1 1 20%;
+    padding-top: 20px;
+    
+  }
+
+  #root main #info div {
+    align-items: center;
+  }
+  
+  #root main article {
+    order:2;
+  }
+
+  
+  #root main #info {
+    padding: 0;
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    order:3;
+    flex: 1 1 10%;
+  }
+
+}
+
+#root footer {
+  flex: 1 1 4%;
+  background: red;
+  border-radius: 10px;
+}
+
+
+#root footer div {
+  display: flex;
+  padding-left: 20px;
+  align-items: center;
+  height: 100%;
+}
+
+
+span {
+}
+
+
+

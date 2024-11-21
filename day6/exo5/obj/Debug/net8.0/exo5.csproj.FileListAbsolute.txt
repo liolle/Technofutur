@@ -1,0 +1,15 @@
+/home/etienne/Desktop/formation/Technofutur/day6/exo5/bin/Debug/net8.0/exo5
+/home/etienne/Desktop/formation/Technofutur/day6/exo5/bin/Debug/net8.0/exo5.deps.json
+/home/etienne/Desktop/formation/Technofutur/day6/exo5/bin/Debug/net8.0/exo5.runtimeconfig.json
+/home/etienne/Desktop/formation/Technofutur/day6/exo5/bin/Debug/net8.0/exo5.dll
+/home/etienne/Desktop/formation/Technofutur/day6/exo5/bin/Debug/net8.0/exo5.pdb
+/home/etienne/Desktop/formation/Technofutur/day6/exo5/obj/Debug/net8.0/exo5.GeneratedMSBuildEditorConfig.editorconfig
+/home/etienne/Desktop/formation/Technofutur/day6/exo5/obj/Debug/net8.0/exo5.AssemblyInfoInputs.cache
+/home/etienne/Desktop/formation/Technofutur/day6/exo5/obj/Debug/net8.0/exo5.AssemblyInfo.cs
+/home/etienne/Desktop/formation/Technofutur/day6/exo5/obj/Debug/net8.0/exo5.csproj.CoreCompileInputs.cache
+/home/etienne/Desktop/formation/Technofutur/day6/exo5/obj/Debug/net8.0/exo5.sourcelink.json
+/home/etienne/Desktop/formation/Technofutur/day6/exo5/obj/Debug/net8.0/exo5.dll
+/home/etienne/Desktop/formation/Technofutur/day6/exo5/obj/Debug/net8.0/refint/exo5.dll
+/home/etienne/Desktop/formation/Technofutur/day6/exo5/obj/Debug/net8.0/exo5.pdb
+/home/etienne/Desktop/formation/Technofutur/day6/exo5/obj/Debug/net8.0/exo5.genruntimeconfig.cache
+/home/etienne/Desktop/formation/Technofutur/day6/exo5/obj/Debug/net8.0/ref/exo5.dll

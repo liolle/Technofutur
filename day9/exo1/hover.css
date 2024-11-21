@@ -1,0 +1,118 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+table {
+  width: 800px;
+  height: 300px 
+}
+
+table tr:nth-child(even){
+  background: blue;
+}
+
+table tr:nth-child(odd){
+  background: aqua;
+}
+
+
+table tr:nth-child(even):hover {
+  background: green;
+  color: white
+}
+
+table tr:nth-child(odd):hover{
+  background: purple;
+}
+
+
+table tr:nth-child(1) {
+  background:orange;
+}
+
+
+table tr:nth-child(1):hover {
+  background:gray;
+}
+
+table tr:nth-child(1) td:nth-child(1) {
+  background: white
+}
+
+table tr:nth-child(n+2){
+  color:white;
+  font-weight:bold
+}
+
+div {
+  width: 790px;
+  padding: 5px;
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content:center
+}
+
+
+table tr:nth-child(odd){
+  color:gray;
+}
+
+
+
+.transition {
+  width: 50px;
+  height: 50px;
+  background: aqua;
+  transition: height 2s ease-in-out, width 4s ease-in-out;
+}
+
+.transition:hover{
+  width: 200px;
+  height: 200px;
+}
+
+
+
+.transition2{
+  width: 100px;
+  height: 100px;
+  background: aqua;
+  transition: transform 3s ease-out;
+  transform-origin: 30% 30%;
+}
+
+.transition2:hover{
+  transform: rotate(360deg); 
+  
+}
+
+.animation {
+  width: 200px;
+  height: 200px;
+  border: 1px dashed red;
+  border-radius: 10px
+  transform: rotate(360deg); 
+  animation: slide 5s ease-in-out infinite;
+}
+
+@keyframes slide {
+25% {
+  transform: translateX(100%);
+    transform: rotateZ(-90deg)
+
+}
+75% {
+  transform: translateX(-100%);
+      transform: rotateZ(90deg)
+
+}
+50% {
+
+}
+100% {
+}
+}

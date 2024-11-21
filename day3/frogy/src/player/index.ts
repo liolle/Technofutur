@@ -29,6 +29,7 @@ export class Player {
   constructor(context:RenderingContext2D, options:PlayerOptions){
     this.context = context
 
+
     // setup options:
     this.#setUpOptions(options)
     this.#setUpListeners()
@@ -232,7 +233,7 @@ export class Player {
   /**
    * Clear all the events listeners
    */
-  free(){
+  clear(){
     for(const cb of this.listenersCb){
       cb()
     }

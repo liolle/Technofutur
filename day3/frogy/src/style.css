@@ -20,18 +20,13 @@
 }
 
 #app {
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	overflow: hidden;
 	height: 100vh;
 	width: 100%;
 }
 
-#canvas {
-	padding : 5px;
-	border: 1px solid white;
-	border-radius: 5px;
+body{
+  overflow:hidden;
 }
 
 @media (prefers-color-scheme: light) {

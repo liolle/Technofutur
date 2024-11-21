@@ -1,0 +1,67 @@
+nav {
+    background: black;
+    color: white;
+    height: 70px;
+    padding: 15px;
+  margin-bottom: 50px
+}
+
+body {
+   position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+nav div {
+    width: fit-content;
+    margin: auto;
+    text-decoration: underline;
+    font-weight: bold;
+    display: flex;
+    gap: 5px;
+    user-select: none;
+    cursor: pointer;
+}
+
+article {
+  height: calc(100vh - 200px);
+  width: 100%;
+  display: flex;
+  gap: 30px;
+  justify-content: between;
+}
+
+#slide2,#slide3 {
+  top: -100%;
+  transition: top 2s,opacity 0.25s;
+  position: absolute;
+  opacity: 0;
+}
+
+article div {
+    paddind-left: 200px;
+    paddind-right: 200px;
+}
+
+#slide2 .container,#slide3 .container {
+  background: #959595;
+  border-radius: 15px
+}
+
+article .container {
+  width: 100%;
+  padding: 15px;
+  display: flex
+}
+
+#slide2:target,#slide3:target {
+  top: 150px;
+  opacity: 1;
+}
+
+
+/* add border to the to last elements */
+nav div a:nth-child(n+2) {
+    border-left: 2px solid white;
+    padding-left: 5px;
+}

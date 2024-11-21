@@ -1,0 +1,45 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+ul {
+  width:500px
+}
+
+li::marker {
+  font-size:0;
+}
+
+ul:nth-child(1) li:nth-child(odd) {
+  background: black;
+  color: white;
+}
+
+ul:nth-child(2) li:nth-child(even) {
+  background: red;
+  color: white;
+}
+
+ul:nth-child(3) li:nth-last-child(-n+2) {
+  background: blue;
+  color: white;
+}
+
+ul:nth-child(4) li:nth-child(2) {
+  background: green;
+  color: white;
+}
+
+.transition {
+  width: 50px;
+  height: 50px;
+  background: aqua;
+}
+
+.transition:hover{
+  width: 200px;
+  height: 200px;
+}

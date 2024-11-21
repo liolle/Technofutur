@@ -1,0 +1,104 @@
+body {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin:0;
+  padding:15px;
+}
+
+.part1 {
+  display: flex;
+  gap: 15px;
+  padding: 15px;
+  background: orange;
+  justify-content: space-between; 
+  user-select: none;
+  flex-direction: column;
+  height: calc(100vh - 30px);
+  align-items: center;
+}
+
+.part1 div:nth-child(1) {
+  order: 4
+}
+
+.part1 div:nth-child(2) {
+  align-self: start;
+  order: 3;
+}
+
+.part1 div:nth-child(3) {
+  align-self: start;
+  odrer:2;
+}
+
+.part1 div:nth-child(4) {
+  align-self: end;
+  odrer: 1
+}
+
+
+.part2 {
+  display: flex;
+  gap: 15px;
+  padding: 15px;
+  background: orange;
+  user-select: none;
+  height: fit-content;
+  flex-direction: column
+}
+
+.part2 span {
+  width: fit-content;
+  padding: 5px;
+  border: 2px dotted red;
+}
+
+.part2 span:nth-child(4){
+  order:-1 
+}
+
+.part2 span:nth-child(1){
+  order:4 
+}
+.part1 div {
+  background: gray;
+  padding: 15px;
+  border: 4px dotted #0cf017;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  border-radius: 20px
+}
+
+.part3 {
+  display: flex;
+  user-select: none;
+  height: fit-content;
+  flex-direction: column;
+  padding: 5px;
+  gap: 5px
+}
+
+.part3 header {
+  flex: 2;
+  background: blue;
+  border-radium: 15px;
+}
+
+.part3 main {
+  flex: 9;
+  border-radium: 15px;
+
+}
+
+
+.part3 footer {
+  flex: 1;
+  background: green;
+  border-radium: 15px;
+
+}
+
+
+

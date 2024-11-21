@@ -60,4 +60,10 @@ export class Game {
     requestAnimationFrame(this.#animate.bind(this))
 
   }
+
+  clear(){
+    for(const player of this._players){
+      player.clear()
+    }
+  }
 }
