@@ -31,8 +31,6 @@ void showTable(Test.Pion[,] table){
 
 }
 
-
-
 // brut force, use backtracking here (flemme) 
 int winning(Test.Pion[,] table)
 {
@@ -115,7 +113,7 @@ while (winning(table)<0)
         botPick();
         showTable(table);
     }else {
-        col = getUserInput();
+        col = getUserInput()-1;
     }
 }
 
