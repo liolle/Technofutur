@@ -12,7 +12,10 @@ void printHelp(){
     Console.WriteLine("What do you want to do?");
 }
 
-printHelp();
+
+if(!QUIT){
+    printHelp();
+}
 
 while (!QUIT)
 {
@@ -33,7 +36,6 @@ while (!QUIT)
     }
 
     double amount;
-
 
     switch (command[0])
     {
@@ -63,7 +65,6 @@ while (!QUIT)
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Transaction successful");
                 }
-                
             }
             else {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -92,14 +93,9 @@ while (!QUIT)
             Console.WriteLine("unknown command (type help to see the available commands)");
             break;
     }
-
 }
 
-
-
 Bank bank = new Bank("ING");
-//bank.add(account);
-//Console.WriteLine(bank["BE4444444444"]);
 
 Account ac = new Courant(personne,"BE4444444444",50,50);
 Account ac2 = new Courant(personne,"BE4444444444",50,50);
