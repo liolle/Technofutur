@@ -36,7 +36,6 @@ body {
 .cell {
   width: 64px;
   height: 64px;
-  border-radius: 5px;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -53,7 +52,6 @@ body {
   width: 64px;
   height: 64px;
   border-radius: 5px;
-
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -88,6 +86,24 @@ body {
 
 .pepe {
   objet-fit: contain;
+}
+
+.score {
+  display: flex;
+  width: 64px;
+  height: 64px;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  overflow: hidden;
+  position: absolute;
+  top: 50px;
+  font-size: 50px;
+  font-family: mono;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (prefers-color-scheme: light) {

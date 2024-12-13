@@ -20,7 +20,10 @@ arr.style.backgroundImage = `url('https://i.gifer.com/origin/6c/6c1aa59dc33011dd
 arr.classList.add('arr')
 
 let score_div = document.createElement("div")
+score_div.textContent = "0"
 score_div.classList.add("score")
+
+document.body.appendChild(score_div)
 
 for (let i = 0; i < ROWS; i++) {
   let row = document.createElement("div")
@@ -47,7 +50,6 @@ function inBound(r:number,c:number) {
 
 document.body.appendChild(arr)
 document.addEventListener('keydown',(e)=>{
-  e.preventDefault()
 
   switch (e.key) {
     case "z":
@@ -100,7 +102,7 @@ function spawnInsects(){
 function updateScore(method:string,amount:number){
   switch (method) {
     case "add":
-      score + amount
+      score += amount
       break;
     case "remove":
       score = Math.max(0,score-amount)
