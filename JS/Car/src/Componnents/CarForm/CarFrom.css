@@ -1,0 +1,44 @@
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+.in {
+  width: 200px;
+  height: 20px;
+}
+
+.input_wrapper {
+  display: flex;
+  gap: .5rem;
+  flex-direction: column;
+}
+
+.row1,
+.row2,
+.row3,
+.row4{
+  display: flex;
+  gap: 2rem;
+}
+
+.row1 input,
+.row2 input ,
+.row3 input ,
+.row4 input {
+  padding: .5rem 1rem;
+  border-radius: .5rem;
+}
+
+.row4{
+  justify-content: center;
+}
+
+.submit-btn {
+  padding: 1rem 2rem;
+  border-radius: .5rem;
+  cursor: pointer;
+}

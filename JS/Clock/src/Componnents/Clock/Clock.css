@@ -1,0 +1,9 @@
+.clock {
+  display: flex;
+  font-size: 50px;
+  font-family: mono;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+  user-select:none
+}
