@@ -1,3 +1,4 @@
+import Position from './Position/Position'
 import './style.css'
 
 const ROWS = 10
@@ -9,7 +10,8 @@ FLY.classList.add("insect")
 
 let table:HTMLElement[][] = []
 let score = 0
-let position = {row:0,col:0}
+let last_position = new Position(0,0)
+let position = new Position(0,0)
 
 const frog_img = document.createElement("img")
 frog_img.src = "bat_pepe.png"
@@ -34,7 +36,10 @@ for (let i = 0; i < ROWS; i++) {
     cell.classList.add('cell')
 
     cell.addEventListener('click',()=>{
-      updateCell(i,j) 
+      last_position.setPoint(position)
+      position.add(i,j)
+      position.normalise(ROWS,COLS)
+      updateCell() 
     })
 
     row.appendChild(cell)
@@ -43,34 +48,38 @@ for (let i = 0; i < ROWS; i++) {
   arr.appendChild(row)
   table.push(r)
 }
-
+/*
 function inBound(r:number,c:number) {
   return r>=0 && c>=0 && r<ROWS && c<COLS 
 }
+*/ 
 
 document.body.appendChild(arr)
 document.addEventListener('keydown',(e)=>{
 
+  last_position.setPoint(position)
   switch (e.key) {
     case "z":
     case "ArrowUp":
-      updateCell(position.row-1,position.col)
+      position.add(-1,0)
       break
     case "s":
     case "ArrowDown":
-      updateCell(position.row+1,position.col)
+      position.add(1,0)
       break
     case "q":
     case "ArrowLeft":
-      updateCell(position.row,position.col-1)
+      position.add(0,-1)
       break
     case "d":
     case "ArrowRight":
-      updateCell(position.row,position.col+1)
+      position.add(0,1)
       break
     default:
       break;
   }
+  position.normalise(ROWS,COLS)
+  updateCell()
 })
 
 function spawnInsects(){
@@ -96,7 +105,6 @@ function spawnInsects(){
     elem.parentNode.removeChild(elem)
     }
   },Math.floor(Math.random()*2000)+1000)
-
 }
 
 function updateScore(method:string,amount:number){
@@ -113,10 +121,9 @@ function updateScore(method:string,amount:number){
   score_div.textContent = score.toString()
 }
 
-function updateCell(r:number,c:number){
-  if(!inBound(r,c)) {return}
-  let last =table[position.row][position.col] 
-  let n_cell = table[r][c] 
+function updateCell(){
+  let last =table[last_position.row][last_position.col] 
+  let n_cell = table[position.row][position.col] 
   for(const child of n_cell.children){
     updateScore('add',1)
     n_cell.removeChild(child)
@@ -124,11 +131,9 @@ function updateCell(r:number,c:number){
   last.style.backgroundImage = ""
   n_cell.style.backgroundImage = `url('bat_pepe.png')`
 
-  position.row = r
-  position.col = c
 }
 
-updateCell(0,0)
+updateCell()
 
 function drawInsect(){
   spawnInsects() 
