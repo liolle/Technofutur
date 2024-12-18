@@ -1,5 +1,10 @@
 
-import { splitProps, type Component, type JSX, onMount } from 'solid-js';
+import { splitProps, type Component, type JSX, onMount, Switch, createSignal, Match } from 'solid-js';
+import { showToast } from '../Toast/Toast';
+
+type BOOKING_STATE = "pending" | "idle"
+
+const [BookingState,setBookingState] = createSignal<BOOKING_STATE>("idle")
 
 const BookingForm: Component = () => {
   let ref:HTMLFormElement|null
@@ -17,7 +22,12 @@ const BookingForm: Component = () => {
     }
 
     const booking = new Booking(input)
-    console.log('Form traitment',booking)
+    setBookingState("pending")
+    setTimeout(()=>{
+      ref.reset()
+      setBookingState("idle")
+      showToast("Booking successfull")
+    },5000)
   }
 
   return (
@@ -33,7 +43,17 @@ const BookingForm: Component = () => {
 
       <div class="flex justify-between items-end flex-row gap-4 w-full">
         <Input required  cls="flex-none w-32 "  name="Number of peoples" type="number"/>
-        <button class="flex-none w-40 h-8 bg-neutral-200 flex justify-center items-center "  type="submit">Book</button>
+        <Switch fallback={
+          <button class="flex-none w-40 h-8 bg-neutral-200 flex justify-center items-center "  type="submit">
+            Booking
+          </button>
+        }>
+          <Match when={BookingState()=="pending"}>
+          <button disabled class="flex-none w-40 h-8 bg-neutral-200 flex justify-center items-center "  type="submit">
+            Loading...
+          </button>
+          </Match>
+        </Switch>
       </div>
 
     </form>
@@ -57,9 +77,9 @@ const Input : Component<InputPropsType> = (props:InputPropsType)=>{
   const [_, rest] = splitProps(props, ["ref"]);
 
   return (
-    <div class={`${props.cls || "" } flex flex-col gap-[.25rem]`}>
+    <div class={`${props.cls || "" } flex flex-col gap-[.25rem] `}>
       <label class="text-neutral-200 text-sm font-bold" ref={label_ref}/>
-      <input ref={(el) => {
+      <input class="bg-neutral-200" ref={(el) => {
         ref = el;
       }}
         {...rest}/>
