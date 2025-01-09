@@ -1,0 +1,43 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Table bill {
+  command_number int [primary key,not null]
+  date date [not null]
+  total int [not null]
+  produt string [not null]
+  client string [not null, note: 'Sum of all sub toatl']
+}
+
+Table client {
+  client_number sting [primary key]
+  name sting [not null]
+  adresse string [not null]
+  locality string [not null]
+} 
+
+Table product {
+  product_number sting [primary key, not null]
+  label string [not null]
+  price int [not null]
+  quantity int [not null]
+  total int [note: 'Sous-Total']
+}
+
+Table bill_product {
+  id string [primary key]
+  product_number sting
+  bill_number string
+}
+
+Table client_bill {
+  id string [primary key]
+  client_number string
+  bill_number string
+}
+
+Ref: bill_product.product_number > product.product_number
+Ref: bill_product.bill_number > bill.command_number
+
+Ref: client_bill.bill_number - bill.command_number
+Ref: client_bill.client_number > client.client_number

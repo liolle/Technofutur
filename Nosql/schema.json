@@ -1,0 +1,22 @@
+{
+  "client": {
+    "client_number": "",
+    "name": "john",
+    "adresse": "adress",
+    "locality": "locality",
+    "commandes": {
+      "command_number": "",
+      "date": "date",
+      "total": 0,
+      "product": [
+        {
+          "product_id": "id"
+          "label": "label",
+          "price": 10,
+          "quatity": 10,
+          "total": 100
+        }
+      ]
+    }
+  }
+}
