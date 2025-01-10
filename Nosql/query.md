@@ -84,4 +84,8 @@
   }
 },{NOM:true}}
 ```
+## Les opérateurs d’éléments
 
+1. Afficher tous les clients n’ayant pas passé de COMMANDES.
+2. Afficher tous les clients n’ayant pas de COMMANDES, de CAT et dont le NOM est de type ‘double’.
+3. Afficher le NOM, l’ADRESSE et le COMPTE des clients n’ayant pas de CAT.
