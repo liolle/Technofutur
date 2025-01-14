@@ -1,0 +1,28 @@
+﻿@using tf2024_asp_razor.Models.Entities
+@model tf2024_asp_razor.Models.Plane.PlaneListVM
+
+<a class="btn btn-success" asp-action="Create">Create</a>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Imma</th>
+        <th>Type</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (PlaneEntity plane in Model.Planes)
+    {
+        <tr>
+            <td>@plane.Id</td>
+            <td>@plane.Imma</td>
+            <td>@plane.Type.Name</td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@plane.Id">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
