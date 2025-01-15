@@ -1,12 +1,11 @@
 @using tf2024_asp_razor.Models.Entities
 @model tf2024_asp_razor.Models.Meca.MecaList;
 
-<a class="btn btn-success" asp-action="Create">Create</a>
+<a class="btn btn-primary" asp-action="Create">Create</a>
 
 <table class="table table-striped">
     <thead>
     <tr>
-        <th>Id</th>
         <th>Name</th>
         <th>Adress</th>
         <th>PhoneNumber</th>
@@ -16,7 +15,6 @@
         @foreach (TaxableEntity meca in Model.mecas)
     {
         <tr>
-            <td>@meca.Id</td>
             <td>@meca.Name</td>
             <td>@meca.Address</td>
             <td>@meca.PhoneNumber</td>

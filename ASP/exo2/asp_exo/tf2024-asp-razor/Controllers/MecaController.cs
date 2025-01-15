@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using tf2024_asp_razor.Database;
 using tf2024_asp_razor.Models.Entities;
 using tf2024_asp_razor.Models.Meca;
@@ -36,7 +35,7 @@ public class MecaController( DataContext db) : Controller
         TaxableEntity entity = db.Taxables.Find(id);
         if (entity != null){
             db.Taxables.Remove(entity);
-            
+            db.SaveChanges();
         }
         return RedirectToAction("Index");
     }

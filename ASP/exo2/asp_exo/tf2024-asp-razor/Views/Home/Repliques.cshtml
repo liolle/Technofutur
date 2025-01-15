@@ -1,0 +1,23 @@
+    @using tf2024_asp_razor.Models.Replique
+    @model tf2024_asp_razor.Models.Replique.Repliques
+
+    <div style="display: flex; gap: 10px; flex-direction: column;">
+
+    @foreach (Replique r in  Model.rep)
+    {
+        <div style="display: flex; gap: 10px; padding: 5px;"> 
+            <strong style="width: 400px;">
+                <span style="font-size: .75rem; font-family: monospace;">
+                    @r.Phrase
+                </span>
+            </strong>
+
+              <i>
+                <span style="font-size: .75rem; font-family: monospace;">
+                    @r.Film
+                </span>
+            </i>
+        </div>
+    }
+
+    </div>
