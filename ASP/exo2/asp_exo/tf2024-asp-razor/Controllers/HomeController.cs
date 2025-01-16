@@ -23,10 +23,7 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Privacy()
-    {
-        return View();
-    }
+
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
@@ -36,7 +33,7 @@ public class HomeController : Controller
 
 
     [HttpGet]
-    [Route("/Moi/RepliqueCulte")]
+    [Route("/Repliques")]
     public IActionResult Repliques(){
         List<Replique> rep = new(){
             new Replique(){ Film ="Forrest Gump", Phrase = "Life is like a box of chocolates. You never know what you're gonna get."},

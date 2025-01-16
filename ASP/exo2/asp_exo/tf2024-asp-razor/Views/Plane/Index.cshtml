@@ -1,7 +1,10 @@
 ﻿@using tf2024_asp_razor.Models.Entities
 @model tf2024_asp_razor.Models.Plane.PlaneListVM
 
-<a class="btn btn-success" asp-action="Create">Create</a>
+<div style="display: flex; gap: 2rem;">
+    <a class="btn btn-primary" asp-action="Create">Create</a>
+    <a class="btn btn-secondary" asp-action="Types">Types</a>
+</div>
 
 <table class="table table-striped">
     <thead>
@@ -9,7 +12,7 @@
         <th>Id</th>
         <th>Imma</th>
         <th>Type</th>
-        <th>Actions</th>
+        <th>Owner</th>
     </tr>
     </thead>
     <tbody>
@@ -19,6 +22,7 @@
             <td>@plane.Id</td>
             <td>@plane.Imma</td>
             <td>@plane.Type.Name</td>
+            <td>@plane.Owner.Name</td>
             <td>
                 <a asp-action="Delete" asp-route-id="@plane.Id">Delete</a>
             </td>
