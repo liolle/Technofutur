@@ -1,0 +1,31 @@
+version: '3.4'
+
+services:
+  db:
+    image: postgres:12-alpine
+    environment:
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_USER: app
+      POSTGRES_DB: app
+
+    networks:
+      - db-net
+#
+#    ports:
+#      - '5435:5432'
+#    volumes:
+  ctfimage:
+    image: bstorm-ctf
+    ports:
+      - '5184:5184'
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: "Host=db;Port=5432;Username=app;Password=1234;Database=app"
+
+    networks:
+      - db-net
+
+networks:
+  db-net:
+    driver: bridge
