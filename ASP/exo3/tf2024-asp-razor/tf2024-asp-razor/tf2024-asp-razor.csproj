@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace>tf2024_asp_razor</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <_ContentIncludedByDefault Remove="Views\Demo\About.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Demo\Index.cshtml" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\AspcoreBll\AspcoreBll.csproj" />
+        <ProjectReference Include="..\AspInterfaces\AspInterfaces.csproj" />
+        <ProjectReference Include="..\tf2024-asp-razor.entities\tf2024-asp-razor.entities.csproj" />
+        <ProjectReference Include="..\tf2024-asp-razor.fluent\tf2024-asp-razor.fluent.csproj" />
+    </ItemGroup>
+
+</Project>

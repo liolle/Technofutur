@@ -1,0 +1,28 @@
+﻿@model tf2024_asp_razor.Models.Plane.PlaneCreateVM
+
+<form asp-action="Create" method="post">
+    <div class="form-control">
+        <label asp-for="Form.Imma">Numero d'immatriculation</label>
+        <input type="text" asp-for="Form.Imma" />
+        <span asp-validation-for="Form.Imma" class="text-danger"></span>
+    </div>
+    <div class="form-control">
+        <label asp-for="Form.OwnerId">Proprietaire</label>
+        <select asp-for="Form.OwnerId">
+            @foreach (var person in Model.Persons)
+            {
+                <option value="@person.Id">@person.Name</option>
+            }
+        </select>
+    </div>
+    <div class="form-control">
+        <label asp-for="Form.TypeId">Type d'avion</label>
+        <select asp-for="Form.TypeId">
+            @foreach (var type in Model.Types)
+            {
+                <option value="@type.Id">@type.Name</option>
+            }
+        </select>
+    </div>
+    <button type="submit">Ajouter</button>
+</form>

@@ -1,0 +1,27 @@
+@using tf2024_asp_razor.Models.Entities
+
+<a class="btn btn-primary" asp-action="Create">Create</a>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Adress</th>
+        <th>PhoneNumber</th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (TaxableEntity meca in Model)
+    {
+        <tr>
+            <td>@meca.Name</td>
+            <td>@meca.Address</td>
+            <td>@meca.PhoneNumber</td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@meca.Id">Delete</a>
+            </td>
+        </tr>
+    }
+   
+    </tbody>
+</table>   

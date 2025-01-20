@@ -1,0 +1,32 @@
+@using tf2024_asp_razor.Models.Entities
+
+<div style="display: flex; gap: 2rem;">
+    <a class="btn btn-primary" asp-action="Create">Create</a>
+</div>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Constructor</th>
+        <th>Power</th>
+        <th>Capacity</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    @foreach (PlaneTypeEntity type in Model)
+    {
+        <tr>
+            <td>@type.Name</td>
+            <td>@type.Constructor</td>
+            <td>@type.Power</td>
+            <td>@type.NbPlace</td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@type.Id">Delete</a>
+            </td>
+        </tr>
+    }
+
+    </tbody>
+</table>

@@ -1,0 +1,31 @@
+﻿@using tf2024_asp_razor.Models.Entities
+
+<div style="display: flex; gap: 2rem;">
+    <a class="btn btn-primary" asp-action="Create">Create</a>
+    <a class="btn btn-secondary" asp-action="Types">Types</a>
+</div>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Imma</th>
+        <th>Type</th>
+        <th>Owner</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (PlaneEntity plane in Model)
+    {
+        <tr>
+            <td>@plane.Id</td>
+            <td>@plane.Imma</td>
+            <td>@plane.Type.Name</td>
+            <td>@plane.Owner.Name</td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@plane.Id">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

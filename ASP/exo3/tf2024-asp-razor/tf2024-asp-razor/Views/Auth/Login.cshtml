@@ -1,0 +1,24 @@
+@model tf2024_asp_razor.Models.Login.LoginForm
+
+<div style="height: 100vh; width: 100%; display: flex; justify-content: center; align-items: center;">
+    <form style="display: flex; flex-direction: column; width: fit-content; justify-content: center; gap: 3rem; padding: 3rem;" asp-action="Login" method="post">
+
+        <div >
+            <div style="display: flex; gap: .5rem; flex-direction: column;">
+                <label asp-for="UserName">UserName</label>
+                <input type="text" asp-for="UserName" />
+            </div>
+            <span asp-validation-for="UserName" class="text-danger"> </span>
+        </div>
+        <div >
+            <div style="display: flex; gap: .5rem; flex-direction: column;">
+                <label asp-for="Password">Password</label>
+                <input type="password" asp-for="Password" />
+            </div>
+            <span asp-validation-for="Password" class="text-danger"> </span>
+        </div>
+        <div style="display: flex; justify-content: center;">
+            <button style=" width: fit-content; padding: 5px 10px; border-radius: 10px;" type="submit">Login</button>
+        </div>
+    </form>
+</div>
