@@ -1,4 +1,4 @@
-namespace apiExo.entity;
+namespace apiExo.bll.entity;
 
 public class TaskModel
 {

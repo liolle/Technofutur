@@ -1,5 +1,5 @@
+using apiExo.bll.entity;
 using apiExo.dal.database;
-using apiExo.entity;
 using Microsoft.Data.SqlClient;
 
 namespace apiExo.bll.services;
@@ -24,13 +24,28 @@ public string Add(TaskEntity task)
         }
     }
 
+    public Task<string> AddAsync(TaskEntity task)
+    {
+        throw new NotImplementedException();
+    }
+
+    public string Delete(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<string> DeleteAsync(int id)
+    {
+        throw new NotImplementedException();
+    }
+
     public ICollection<TaskEntity> GetAll()
     {
         var tasks = new List<TaskEntity>();
 
         using (SqlConnection conn = context.CreateConnection())
         {
-            string query = "SELECT Id, Title, Status FROM Tasks";
+            string query = "SELECT Id, Title, Status, CreatedAt FROM Tasks";
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 conn.Open();
@@ -40,9 +55,10 @@ public string Add(TaskEntity task)
                     {
                         tasks.Add(new TaskEntity
                         {
-                            Id = reader.GetInt32(0),
-                            Title = reader.GetString(1),
-                            Status = reader.GetString(2)
+                            Id = (int) reader[nameof(TaskEntity.Id)],
+                            Title = (string) reader[nameof(TaskEntity.Title)],
+                            Status = (string) reader[nameof(TaskEntity.Status)],
+                            CreatedAt = (DateTime) reader[nameof(TaskEntity.CreatedAt)]
                         });
                     }
                 }
@@ -51,11 +67,16 @@ public string Add(TaskEntity task)
         return tasks;
     }
 
+    public Task<ICollection<TaskEntity>> GetAllAsync()
+    {
+        throw new NotImplementedException();
+    }
+
     public TaskEntity? GetByID(int id)
     {
         using (SqlConnection conn = context.CreateConnection())
         {
-            string query = "SELECT Id, Title, Status FROM Tasks WHERE Id = @Id";
+            string query = "SELECT Id, Title, Status, CreatedAt FROM Tasks WHERE Id = @Id";
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 cmd.Parameters.AddWithValue("@Id", id);
@@ -67,15 +88,21 @@ public string Add(TaskEntity task)
                     {
                         return new TaskEntity
                         {
-                            Id = reader.GetInt32(0),
-                            Title = reader.GetString(1),
-                            Status = reader.GetString(2)
+                            Id = (int) reader[nameof(TaskEntity.Id)],
+                            Title = (string) reader[nameof(TaskEntity.Title)],
+                            Status = (string) reader[nameof(TaskEntity.Status)],
+                            CreatedAt = (DateTime) reader[nameof(TaskEntity.CreatedAt)]
                         };
                     }
                 }
             }
         }
         return null;
+    }
+
+    public Task<TaskEntity?> GetByIDAsync(int id)
+    {
+        throw new NotImplementedException();
     }
 
     public string Patch(TaskPatch p_task)
@@ -95,6 +122,11 @@ public string Add(TaskEntity task)
         }
     }
 
+    public Task<string> PatchAsync(TaskPatch task)
+    {
+        throw new NotImplementedException();
+    }
+
     public string Update(TaskUpdate task)
     {
          using (SqlConnection conn = context.CreateConnection())
@@ -111,5 +143,10 @@ public string Add(TaskEntity task)
                 return rowsAffected > 0 ? "Task updated successfully" : "Task not found or update failed";
             }
         }
+    }
+
+    public  Task<string> UpdateAsync(TaskUpdate task)
+    {
+        throw new NotImplementedException();
     }
 }

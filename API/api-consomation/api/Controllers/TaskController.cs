@@ -1,4 +1,4 @@
-using apiExo.entity;
+using apiExo.bll.entity;
 using apiExo.bll.services;
 using Microsoft.AspNetCore.Mvc;
 
