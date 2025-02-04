@@ -60,4 +60,9 @@ ADD CONSTRAINT FK_TASK_USER
 FOREIGN KEY(UserId) REFERENCES Users(Id)
 ON DELETE CASCADE
 ON UPDATE CASCADE;
+
+/* Unique constraint on email to be able to login */
+ALTER TABLE Users
+ADD CONSTRAINT UQ_Users_Email UNIQUE (Email)
+
 ```
