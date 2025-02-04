@@ -1,13 +1,16 @@
 using apiExo.bll.entity;
 using apiExo.bll.services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace apiExo.controllers;
+
 
 public class TaskController(ITaskService ts) : ControllerBase
 {
 
     [HttpGet]
+    [Authorize]
     public ActionResult All()
     {
         var tasks = ts.GetAll();
@@ -16,6 +19,7 @@ public class TaskController(ITaskService ts) : ControllerBase
 
 
     [HttpGet]
+    [Authorize]
     public ActionResult GetById([FromQuery] int id)
     {
         var task = ts.GetByID(id);
@@ -23,6 +27,7 @@ public class TaskController(ITaskService ts) : ControllerBase
     }
 
     [HttpPost]
+    [Authorize]
     public ActionResult Add([FromBody] TaskModel model)
     {
         var task = new TaskEntity
@@ -36,6 +41,7 @@ public class TaskController(ITaskService ts) : ControllerBase
     }
 
     [HttpPut]
+    [Authorize]
     public ActionResult Update([FromBody] TaskUpdate model)
     {
         string result = ts.Update(model);
@@ -43,6 +49,7 @@ public class TaskController(ITaskService ts) : ControllerBase
     }
 
     [HttpPatch]
+    [Authorize]
     public ActionResult Patch([FromBody] TaskPatch model)
     {
         string result = ts.Patch(model);
