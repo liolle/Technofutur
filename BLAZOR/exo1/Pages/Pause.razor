@@ -1,0 +1,39 @@
+@page "/pause/{pwd}"
+@page "/pause"
+@code {
+    [Parameter]
+    public string? pwd {get;set;}
+    private int countdown = 600;
+
+    public string Time {
+        get {
+            TimeSpan ts = TimeSpan.FromSeconds(countdown);
+            return $"{ts.Minutes:D2}:{ts.Seconds:D2}";
+        }
+    }
+
+    protected override void  OnInitialized(){
+        _ = Tick();
+    }
+
+    private async Task Tick(){
+        while (true)
+        {
+            if(countdown<=0){
+                countdown = 600;
+            }
+            countdown--;
+            StateHasChanged();  
+            await Task.Delay(1000);  
+        }
+    }
+}
+
+<div class="pause-main">
+
+    @if (pwd == "god") {
+        <span>Pause</span>
+    }else{
+        <span>@Time</span>
+    }
+</div>

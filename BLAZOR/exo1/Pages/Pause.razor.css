@@ -1,0 +1,14 @@
+.pause-main {
+    height: 100%;
+    background-color: #262626;
+    color: azure;
+    font-family: monospace;
+    font-size: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-style: italic;
+    user-select: none;
+    font-weight: bold;
+}
+
