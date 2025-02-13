@@ -1,0 +1,15 @@
+@using exo1.QZ
+@code {
+    [Parameter, EditorRequired]
+    public Guess Guess { get; set; } = null!;
+}
+
+<div class="guess-card @(Guess.IsValid ? "correct" : "incorrect")">
+    <div class="question">@Guess.Question.Statement</div>
+    <div class="answer">
+        Your Answer: <strong>@(Guess.GS ? "True" : "False")</strong>
+    </div>
+    <div class="result">
+        @(Guess.IsValid ? "✅ Correct!" : "❌ Incorrect!")
+    </div>
+</div>

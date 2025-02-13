@@ -1,0 +1,48 @@
+.quiz-main {
+    height: 100%;
+    background-color: #262626;
+    color: azure;
+    font-family: monospace;
+    font-size:2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-style: italic;
+    user-select: none;
+    font-weight: bold;
+}
+
+.question-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 4rem;
+}
+
+.question-btns{
+    display: flex;
+    gap: 4rem;
+}
+
+.question-statement {
+    width: fit-content;
+    font-size: 1.5rem;
+}
+
+.question-btns button{
+    width: 100px;
+    font-size: x-large;
+    border-radius: .5rem;
+}
+
+.cards {
+    overflow-y: scroll;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+}

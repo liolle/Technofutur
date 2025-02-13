@@ -1,0 +1,28 @@
+.guess-card {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    font-size: medium;
+    width: 500px;
+
+}
+
+.answer {
+    font-weight:lighter
+}
+
+.result {
+    font-weight:lighter
+}
+
+.correct {
+    border-left: 5px solid #28a745;
+}
+.incorrect {
+    border-left: 5px solid #dc3545;
+}
+.question {
+    font-weight: bold;
+    font-size: 1.5rem;
+}

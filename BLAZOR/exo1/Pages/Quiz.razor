@@ -1,0 +1,51 @@
+@using exo1.QZ;
+@page "/quiz"
+
+@code {
+    public int step { get; set; } = 1;
+
+    private List<Guess> guesses {get;set;} = [];
+
+    public QuizGame qz {get;set;} = new();
+
+    private void RegisterGuess(bool val){
+        Guess guess = new(){
+            Question = qz[step],
+            GS = val
+        };
+
+        guesses.Add(
+            guess
+        );
+    }
+
+    public void Next(bool val){
+        if (step>QuizGame.Questions.Count){return;}
+        RegisterGuess(val);
+        step++;
+        StateHasChanged();
+    }
+
+    public string ComputeResult() {
+        return $"{guesses.FindAll(g=>g.IsValid).Count} / {qz.Len}";
+    }
+}
+
+<div class="quiz-main">
+    @if(step<=qz.Len){
+        <div class="question-card">
+            <div class="question-statement">@qz[@step].Statement</div>  
+            <div class="question-btns">
+                <button @onclick="()=>Next(true)">True</button>
+                <button @onclick="()=>Next(false)">False</button>
+            </div>
+        </div>  
+    }else {
+        <div class="cards">
+            @foreach (var guess in guesses)
+            {
+                <GuessDisplay Guess="@guess" />
+            }
+        </div>
+    }
+</div>
