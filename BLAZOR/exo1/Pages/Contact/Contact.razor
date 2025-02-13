@@ -1,7 +1,9 @@
 @page "/contact"
+@using exo1.Pages.Toast
 @using exo1.models
 
 <div class="form-main">
+    <Toast /> 
     <EditForm Model="Model" OnValidSubmit="SubmitValidFrom">
         <div class="form-container">
             <DataAnnotationsValidator />
