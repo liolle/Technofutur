@@ -1,0 +1,12 @@
+[
+    { "Statement": "The Great Wall of China is visible from space.", "Answer": false },
+    { "Statement": "Water boils at 100°C at sea level.", "Answer": true },
+    { "Statement": "Sharks are mammals.", "Answer": false },
+    { "Statement": "The capital of Australia is Sydney.", "Answer": false },
+    { "Statement": "Light travels faster than sound.", "Answer": true },
+    { "Statement": "Mount Everest is the tallest mountain in the world.", "Answer": true },
+    { "Statement": "Bananas grow on trees.", "Answer": false },
+    { "Statement": "The human body has 206 bones.", "Answer": true },
+    { "Statement": "Goldfish only have a 3-second memory.", "Answer": false },
+    { "Statement": "Octopuses have three hearts.", "Answer": true }
+]

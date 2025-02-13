@@ -1,16 +1,20 @@
-@using exo1.QZ;
 @page "/quiz"
+@using exo1.entities
+@using exo1.services
 
 @code {
     public int step { get; set; } = 1;
 
     private List<Guess> guesses {get;set;} = [];
 
-    public QuizGame qz {get;set;} = new();
+    [Inject]
+    public required IQuestionService qs {get;set;} 
+
+    public required QuestionService service {get;set;}
 
     private void RegisterGuess(bool val){
         Guess guess = new(){
-            Question = qz[step],
+            Question = service[step],
             GS = val
         };
 
@@ -20,21 +24,25 @@
     }
 
     public void Next(bool val){
-        if (step>QuizGame.Questions.Count){return;}
+        if (step>service.Len){return;}
         RegisterGuess(val);
         step++;
         StateHasChanged();
     }
 
     public string ComputeResult() {
-        return $"{guesses.FindAll(g=>g.IsValid).Count} / {qz.Len}";
+        return $"{guesses.FindAll(g=>g.IsValid).Count} / {service.Len}";
+    }
+
+    protected override void OnInitialized(){
+        service = (qs.GetService());
     }
 }
 
 <div class="quiz-main">
-    @if(step<=qz.Len){
+    @if(step<=service.Len){
         <div class="question-card">
-            <div class="question-statement">@qz[@step].Statement</div>  
+            <div class="question-statement">@service[@step].Statement</div>  
             <div class="question-btns">
                 <button @onclick="()=>Next(true)">True</button>
                 <button @onclick="()=>Next(false)">False</button>
