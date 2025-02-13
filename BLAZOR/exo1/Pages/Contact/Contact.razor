@@ -1,0 +1,63 @@
+@page "/contact"
+@using exo1.models
+
+<div class="form-main">
+    <EditForm Model="Model" OnValidSubmit="SubmitValidFrom">
+        <div class="form-container">
+            <DataAnnotationsValidator />
+
+            <div class="form-element">
+                <div class="form-input">
+                    <label>Nom:</label>
+                    <InputText @bind-Value="Model.Nom" class="" />
+                </div>
+                <div class="form-input-error">
+                    <ValidationMessage For="@(() => Model.Nom)" />
+                </div>
+            </div>
+
+            <div class="form-element">
+                <div class="form-input">
+                    <label>Email:</label>
+                    <InputText @bind-Value="Model.Email" class="" />
+                </div>
+                <div class="form-input-error">
+                    <ValidationMessage For="@(() => Model.Email)" />
+                </div>
+            </div>
+
+            <div class="form-element">
+                <div class="form-input">
+                    <label>Téléphone:</label>
+                    <InputText @bind-Value="Model.Telephone" class="" />
+                </div>
+                <div class="form-input-error"> 
+                    <ValidationMessage For="@(() => Model.Telephone)" />
+                </div>
+            </div>
+
+            <div class="form-element">
+                <div class="form-input">
+                    <label>Message:</label>
+                    <InputTextArea @bind-Value="Model.Message" class="" />
+                </div>
+                <div class="form-input-error">
+                    <ValidationMessage For="@(() => Model.Message)" />
+                </div>
+            </div>
+
+            <div class="form-element">
+                <div class="form-input">
+                    <label>Couleur:</label>
+                    <InputText type="color" @bind-Value="Model.Color" class="" />
+                </div>
+                <div class="form-input-error">
+                    <ValidationMessage For="@(() => Model.Color)" />
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Send</button>
+
+        </div>
+    </EditForm>
+</div>

@@ -1,0 +1,44 @@
+.form-main {
+    height: 100%;
+    background-color: #262626;
+    color: azure;
+    font-family: monospace;
+    font-size:1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-style: italic;
+    user-select: none;
+    font-weight: bold;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+}
+
+.form-element {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    width: 100%;
+}
+.form-input  label{
+    width: 100px;
+}
+
+.form-input {
+    display: flex;
+    gap: 10px;
+}
+
+.form-input-error {
+    font-size: medium;
+    font-weight: lighter;
+    font-style: italic;
+    height: 1rem;
+}
