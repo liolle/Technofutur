@@ -11,6 +11,7 @@ public partial class Toast : ComponentBase
     private string MessageContent { get; set; } = string.Empty;
     private string MessageType { get; set; } = "success"; // default to success
     public int DismissAfter { get; set; } = 3;
+    public string Col {get;set;} = "#28a745";
 
     private string MessageTypeClass => MessageType switch
     {
@@ -20,6 +21,7 @@ public partial class Toast : ComponentBase
         "warning" => "toast-message-warning",
         _ => "toast-message-default"
     };
+
 
     protected override async Task OnParametersSetAsync()
     {
@@ -36,11 +38,12 @@ public partial class Toast : ComponentBase
         ToastService.OnHide += HideMessage;
     }
 
-    private async void ShowToast(string message, string type, int dismissAfter)
+    private async void ShowToast(string message,string color, string type, int dismissAfter)
     {
         MessageContent = message;
         MessageType = type;
         ShowMessage = true;
+        Col = color;
 
         await InvokeAsync(StateHasChanged); // Ensure the UI updates
 

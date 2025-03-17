@@ -12,6 +12,6 @@ public partial class Contact : ComponentBase
     ToastService Toast {get;set;}
 
     private void SubmitValidFrom (){
-        Toast.ShowSuccess($"Hello {Model.Nom}");
+        Toast.ShowCustom($"Hello {Model.Nom}",Model.Color);
     }
 }
