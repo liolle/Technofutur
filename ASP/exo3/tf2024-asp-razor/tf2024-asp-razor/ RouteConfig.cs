@@ -7,6 +7,12 @@ public static class RouteConfig
         app.MapControllerRoute(
             name: "default",
             pattern: "{controller=Home}/{action=Index}/{id?}");
+        
+
+        // Planes 
+        app.MapControllerRoute(
+            name: "list-planes-types",
+            pattern: "{controller=PlaneType}/{action=Index}/{id?}");
 
         app.MapControllerRoute(
             name: "list-planes",

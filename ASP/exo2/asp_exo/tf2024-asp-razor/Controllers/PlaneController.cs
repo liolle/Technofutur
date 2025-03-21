@@ -11,7 +11,7 @@ public class PlaneController(ILogger<PlaneController> logger, DataContext db) : 
     [Route("/Plane")]
     public IActionResult Index()
     {
-        return View(new PlaneListVM(db.Planes.Include("Type").Include("Owner")));
+        return View(new PlaneListVM(db.Planes.Include(p=>p.Type).Include(p=>p.Owner)));
     }
 
     public IActionResult Create()

@@ -24,7 +24,6 @@
 
     <ItemGroup>
         <ProjectReference Include="..\AspcoreBll\AspcoreBll.csproj" />
-        <ProjectReference Include="..\AspInterfaces\AspInterfaces.csproj" />
         <ProjectReference Include="..\tf2024-asp-razor.entities\tf2024-asp-razor.entities.csproj" />
         <ProjectReference Include="..\tf2024-asp-razor.fluent\tf2024-asp-razor.fluent.csproj" />
     </ItemGroup>

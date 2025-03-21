@@ -7,13 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AspcoreDAL\AspcoreDAL.csproj" />
     <ProjectReference Include="..\tf2024-asp-razor.entities\tf2024-asp-razor.entities.csproj" />
+    <ProjectReference Include="..\tf2024-asp-razor.fluent\tf2024-asp-razor.fluent.csproj" />
   </ItemGroup>
 
 </Project>

@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "tf2024-asp-razor", "tf2024-
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspcoreBll", "AspcoreBll\AspcoreBll.csproj", "{95487728-24E2-4FA1-A542-A71925F9CFD0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspInterfaces", "AspInterfaces\AspInterfaces.csproj", "{4B5CB790-7820-44B1-BF5F-5E3BA50B61D0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspcoreDAL", "AspcoreDAL\AspcoreDAL.csproj", "{07F334F8-98B9-40BC-A404-9037E951D193}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +39,10 @@ Global
 		{4B5CB790-7820-44B1-BF5F-5E3BA50B61D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B5CB790-7820-44B1-BF5F-5E3BA50B61D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B5CB790-7820-44B1-BF5F-5E3BA50B61D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07F334F8-98B9-40BC-A404-9037E951D193}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07F334F8-98B9-40BC-A404-9037E951D193}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07F334F8-98B9-40BC-A404-9037E951D193}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07F334F8-98B9-40BC-A404-9037E951D193}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

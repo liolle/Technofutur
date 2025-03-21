@@ -3,7 +3,6 @@ namespace AspcoreBll.Auth;
 
 public class AuthService(SessionManager session) : IAuthService
 {
-
     static readonly Dictionary<string,User> users = new(){
         {"admin_test-admin_test",new User{UserId = 0,UserName = "admin_test",pwd = "admin_test", Role = "admin"}},
         {"pilot_test-pilot_test",new User{UserId = 0,UserName = "pilot_test",pwd = "pilot_test", Role = "pilot"}},
@@ -21,11 +20,9 @@ public class AuthService(SessionManager session) : IAuthService
         User? u = users.GetValueOrDefault($"{userName}-{pwd}");
         if (u == null){return false;}
 
-
         session.UserId = u.UserId;
         session.UserName = u.UserName;
         session.Role = u.Role;
-
         return true;
     }
 

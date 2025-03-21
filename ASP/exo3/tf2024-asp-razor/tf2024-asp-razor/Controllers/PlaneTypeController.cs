@@ -1,13 +1,10 @@
 using AspcoreBll;
 using Microsoft.AspNetCore.Mvc;
-using tf2024_asp_razor.Database;
-using tf2024_asp_razor.Models.Entities;
 using tf2024_asp_razor.Models.Plane;
 
 public class PlaneTypeController( IPlaneTypeService pt) : Controller
 {
     
-    [Route("/Plane/types")]
     public IActionResult Index()
     {
         return View(pt.GetAll());
@@ -24,7 +21,6 @@ public class PlaneTypeController( IPlaneTypeService pt) : Controller
     {
 
         if (!ModelState.IsValid){
-            Console.WriteLine("invalid");
             return View(planeType);
         }
 
