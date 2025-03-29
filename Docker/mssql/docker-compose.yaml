@@ -1,0 +1,15 @@
+services:
+  mssql:
+    image: mcr.microsoft.com/mssql/server
+    container_name: mssql_container
+    ports:
+      - "1433:1433" 
+    env_file: 
+      - mssql.env
+    volumes:
+      - mssql_data:/var/opt/mssql 
+    restart: always 
+
+volumes:
+  mssql_data:
+    driver: local
